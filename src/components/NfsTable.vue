@@ -1,38 +1,44 @@
 <template>
   <div v-if="errored">
-    <p>Impossível carregar os dados</p>
+    <p>Desculpe! Impossível carregar os dados</p>
   </div>
   <div v-else>
     <p v-if="loading">Carregando...</p>
-    <table v-if="info">
-      <thead>
-        <tr>
-          <th>NOTA FISCAL</th>
-          <th>SACADO</th>
-          <th>CEDENTE</th>
-          <th>EMISSÃO</th>
-          <th>VALOR</th>
-          <th>STATUS</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr v-for="item in info" v-bind:key="item.nNf">
-            <td> {{ item.nNf }} </td>
-            <td> {{ item.buyer.name }} </td>
-            <td> {{ item.provider.name }} </td>
-            <td> {{ item.emissionDate.slice(0, 10).split('-').reverse().join('/') }} </td>
-            <td> {{ item.value }} </td>
-            <td> {{ item.orderStatusBuyer }} </td>
-            <td>
-              <button
-                type="button"
-              >
-                Dados do cedente
-              </button>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+    <div
+      v-if="info"
+      >
+      <ul class="thead d-flex">
+        <li class="th list-group-item text-start">NOTA FISCAL</li>
+        <li class="th list-group-item text-start">SACADO</li>
+        <li class="th list-group-item text-start">CEDENTE</li>
+        <li class="th list-group-item text-start">EMISSÃO</li>
+        <li class="th list-group-item text-start">VALOR</li>
+        <li class="th list-group-item text-start" style="width: 200px">STATUS</li>
+        <li class="th list-group-item text-start" style="width: 200px"></li>
+      </ul>
+      <ul
+        v-for="item in info" v-bind:key="item.id"
+        class="tbody d-flex align-items-center rounded py-2"
+        >
+        <li class="td list-group-item text-start"> {{ item.nNf }} </li>
+        <li class="td list-group-item text-start"> {{ item.buyer.name }} </li>
+        <li class="td list-group-item text-start"> {{ item.provider.name }} </li>
+        <li class="td list-group-item text-start"> {{ item.emissionDate.slice(0, 10).split('-').reverse().join('/') }} </li>
+        <li class="td list-group-item text-start" style=" color: #00AD8C;"> {{ 
+          Intl.NumberFormat('BRL', {style: 'currency', currency: 'BRL'})
+            .format(Number(item.value))
+        }} </li>
+        <li class="td list-group-item text-start" style="width: 200px; color: #00AD8C;"> {{ orderStatusBuyerArr[item.orderStatusBuyer] }} </li>
+        <li class="td list-group-item " style="width: 200px">
+          <button
+            type="button"
+            class="rounded-pill px-4 py-1"
+          >
+            Dados do cedente
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -45,7 +51,18 @@ export default {
     return {
       info: undefined,
       loading: true,
-      errored: false
+      errored: false,
+      orderStatusBuyerArr: [
+        'Pendente de confirmação',
+        'Pedido confirmado',
+        'Não reconhece o pedido',
+        'Mercadoria não recebida',
+        'Recebida com avaria',
+        'Devolvida',
+        'Recebida com devolução parcial',
+        'Recebida e confirmada',
+        'Pagamento Autorizado'
+      ],
     }
   },
   mounted() {
@@ -62,3 +79,32 @@ export default {
   }
 }
 </script>
+
+<style>
+
+.thead .th {
+  color: #A1A8B9;
+}
+
+li {
+  font-size: 0.9rem;
+  font-weight: 500;
+  width: 150px;
+}
+
+.tbody {
+  border: 1px solid #E0E2EB;
+}
+
+.tbody .td {
+  color: #4D5567;
+}
+
+.td button {
+  background-color: transparent;
+  border: 1px solid #E0E2EB;
+  color: #727D94;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+</style>
