@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-between w-100 h-100">
-    <nav class="d-flex flex-column" style="width: 18%">
+    <nav class="d-flex flex-column d-none d-lg-block" style="width: 18%">
       <a href="https://cashforce.com.br">
         <img
           src="https://cashforce.com.br/wp-content/themes/cashforce/assets/images/logo-cashforce.svg"
@@ -10,12 +10,14 @@
       </a>
       <button class="nf-button py-3 px-3"><i class="fa"></i> Notas fiscais</button>
     </nav>
-    <section class="d-flex flex-column p-5" style="width: 82%">
+    <NavMob class="d-lg-none"/>
+    <section class="d-flex flex-column p-5">
       <div class="text-start">
         <h1 class="fs-3"><i class="fa"></i> Notas fiscais</h1>
-        <h2 class="fs-6">Visualize as notas fiscais que você tem.</h2>
+        <h6 class="">Visualize as notas fiscais que você tem.</h6>
       </div>
-      <NfsTable />
+      <NfsTable class="d-none d-lg-block"/>
+      <MobileComponent class="d-lg-none"/>
     </section>
   </div>
 </template>
@@ -23,13 +25,16 @@
 <script>
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
+import MobileComponent from "./components/MobileComponent.vue";
 import NfsTable from "./components/NfsTable";
-
+import NavMob from "./components/NavMob.vue";
 export default {
   name: 'App',
   components: {
-    NfsTable
-  }
+    NfsTable,
+    MobileComponent,
+    NavMob,
+}
 }
 </script>
 
@@ -70,6 +75,7 @@ nav a img {
 section {
   border-top: 1px solid #E0E2EB;
   margin-top: 60px;
+  width: 82%;
 }
 
 section div h1 {
@@ -78,8 +84,14 @@ section div h1 {
   margin-bottom: 5px;
 }
 
-section div h2 {
+section div h6 {
   color: #727D94;
   margin-bottom: 1rem;
+}
+@media (max-width: 990px)
+{
+  section {
+    width: 100%;
+  }
 }
 </style>

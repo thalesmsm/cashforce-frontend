@@ -28,7 +28,7 @@
           Intl.NumberFormat('BRL', {style: 'currency', currency: 'BRL'})
             .format(Number(item.value))
         }} </li>
-        <li class="td list-group-item text-start" style="width: 200px; color: #00AD8C;"> {{ orderStatusBuyerArr[item.orderStatusBuyer] }} </li>
+        <li class="td list-group-item text-start" style="width: 200px; color: #00AD8C; text-transform: uppercase;"> {{ orderStatusBuyerArr[item.orderStatusBuyer] }} </li>
         <li class="td list-group-item " style="width: 200px">
           <button
             type="button"
@@ -87,7 +87,7 @@ export default {
 }
 
 li {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   width: 150px;
 }
