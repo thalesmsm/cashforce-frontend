@@ -77,6 +77,10 @@
       "complexity": [
         "error",
         12
+      ],
+      "indent": [
+        "error",
+        "tab"
       ]
     }
   },

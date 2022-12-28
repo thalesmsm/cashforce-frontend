@@ -1,7 +1,5 @@
 <template>
-    <div v-if="errored">
-    <p>Desculpe! Impossível carregar os dados</p>
-  </div>
+  <p v-if="errored">Desculpe! Impossível carregar os dados</p>
   <p v-else-if="loading">Carregando...</p>
   <p v-else-if="info.length === 0">Nenhuma nota fiscal cadastrada!</p>
   <div v-else>
@@ -49,41 +47,41 @@
 </template>
 
 <script>
-  import axios from 'axios';
+import axios from 'axios';
 
-  export default {
-    name: 'NfsTable',
-    data () {
-      return {
-        info: [],
-        loading: true,
-        errored: false,
-        orderStatusBuyerArr: [
-          'Pendente de confirmação',
-          'Pedido confirmado',
-          'Não reconhece o pedido',
-          'Mercadoria não recebida',
-          'Recebida com avaria',
-          'Devolvida',
-          'Recebida com devolução parcial',
-          'Recebida e confirmada',
-          'Pagamento Autorizado'
-        ],
-      };
-    },
-    mounted() {
-      axios
-        .get('http://localhost:3001/orders')
-        .then((response) => {
-          this.info = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-          this.errored = true;
-        })
-        .finally(() => this.loading = false);
-    }
-  };
+export default {
+	name: 'NfsTable',
+	data() {
+		return {
+			info: [],
+			loading: true,
+			errored: false,
+			orderStatusBuyerArr: [
+				'Pendente de confirmação',
+				'Pedido confirmado',
+				'Não reconhece o pedido',
+				'Mercadoria não recebida',
+				'Recebida com avaria',
+				'Devolvida',
+				'Recebida com devolução parcial',
+				'Recebida e confirmada',
+				'Pagamento Autorizado'
+			],
+		};
+	},
+	mounted() {
+		axios
+			.get('http://localhost:3001/orders')
+			.then((response) => {
+				this.info = response.data;
+			})
+			.catch((error) => {
+				console.log(error);
+				this.errored = true;
+			})
+			.finally(() => this.loading = false);
+	}
+};
 </script>
 
 <style>
