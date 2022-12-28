@@ -16,9 +16,9 @@
 </template>
 
 <script>
-export default {
-  name: 'NavMob',
-}
+  export default {
+    name: 'NavMob',
+  }
 </script>
 
 <style>

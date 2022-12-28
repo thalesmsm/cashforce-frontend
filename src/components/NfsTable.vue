@@ -5,9 +5,7 @@
   <p v-else-if="loading">Carregando...</p>
   <p v-else-if="info.length === 0">Nenhuma nota fiscal cadastrada!</p>
   <div v-else>
-    <div
-      v-if="info"
-      >
+    <div>
       <ul class="thead d-flex">
         <li class="th list-group-item text-start">NOTA FISCAL</li>
         <li class="th list-group-item text-start">SACADO</li>
@@ -28,7 +26,7 @@
         <li class="td list-group-item text-start"> 
           {{ item.emissionDate.slice(0, 10).split('-').reverse().join('/') }} 
         </li>
-        <li class="td list-group-item text-start" style=" color: #00AD8C;"> {{ 
+        <li class="td list-group-item text-start" style="color: #00AD8C;"> {{ 
           Intl.NumberFormat('BRL', {style: 'currency', currency: 'BRL'})
             .format(Number(item.value))
         }} </li>
@@ -40,7 +38,7 @@
         <li class="td list-group-item " style="width: 200px">
           <button
             type="button"
-            class="rounded-pill px-4 py-1"
+            class="cd-button rounded-pill px-4 py-1"
           >
             Dados do cedente
           </button>
@@ -51,41 +49,41 @@
 </template>
 
 <script>
-import axios from 'axios';
+  import axios from 'axios';
 
-export default {
-	name: 'NfsTable',
-	data () {
-		return {
-			info: undefined,
-			loading: true,
-			errored: false,
-			orderStatusBuyerArr: [
-				'Pendente de confirmação',
-				'Pedido confirmado',
-				'Não reconhece o pedido',
-				'Mercadoria não recebida',
-				'Recebida com avaria',
-				'Devolvida',
-				'Recebida com devolução parcial',
-				'Recebida e confirmada',
-				'Pagamento Autorizado'
-			],
-		};
-	},
-	mounted() {
-		axios
-			.get('http://localhost:3001/orders')
-			.then((response) => {
-				this.info = response.data;
-			})
-			.catch((error) => {
-				console.log(error);
-				this.errored = true;
-			})
-			.finally(() => this.loading = false);
-	}
-};
+  export default {
+    name: 'NfsTable',
+    data () {
+      return {
+        info: [],
+        loading: true,
+        errored: false,
+        orderStatusBuyerArr: [
+          'Pendente de confirmação',
+          'Pedido confirmado',
+          'Não reconhece o pedido',
+          'Mercadoria não recebida',
+          'Recebida com avaria',
+          'Devolvida',
+          'Recebida com devolução parcial',
+          'Recebida e confirmada',
+          'Pagamento Autorizado'
+        ],
+      };
+    },
+    mounted() {
+      axios
+        .get('http://localhost:3001/orders')
+        .then((response) => {
+          this.info = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => this.loading = false);
+    }
+  };
 </script>
 
 <style>
@@ -99,7 +97,6 @@ export default {
     color: #A1A8B9;
   }
 
-
   .tbody {
     border: 1px solid #E0E2EB;
   }
@@ -108,7 +105,7 @@ export default {
     color: #4D5567;
   }
 
-  .td button {
+  .cd-button {
     background-color: transparent;
     border: 1px solid #E0E2EB;
     color: #727D94;
