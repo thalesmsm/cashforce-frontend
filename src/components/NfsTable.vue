@@ -1,7 +1,7 @@
 <template>
   <p v-if="errored">Desculpe! Impossível carregar os dados</p>
   <p v-else-if="loading">Carregando...</p>
-  <p v-else-if="info.length === 0">Nenhuma nota fiscal cadastrada!</p>
+  <p v-else-if="nfsInfos.length === 0">Nenhuma nota fiscal cadastrada!</p>
   <div v-else>
     <div>
       <ul class="thead d-flex">
@@ -15,29 +15,29 @@
       </ul>
 
       <ul
-        v-for="item in info" v-bind:key="item.id"
+        v-for="nfs in nfsInfos" v-bind:key="nfs.id"
         class="tbody d-flex align-items-center rounded py-2"
         >
-        <li class="td list-group-item text-start"> {{ item.nNf }} </li>
-        <li class="td list-group-item text-start"> {{ item.buyer.name }} </li>
-        <li class="td list-group-item text-start"> {{ item.provider.name }} </li>
+        <li class="td list-group-item text-start"> {{ nfs.nNf }} </li>
+        <li class="td list-group-item text-start"> {{ nfs.buyer.name }} </li>
+        <li class="td list-group-item text-start"> {{ nfs.provider.name }} </li>
         <li class="td list-group-item text-start"> 
-          {{ item.emissionDate.slice(0, 10).split('-').reverse().join('/') }} 
+          {{ nfs.emissionDate.slice(0, 10).split('-').reverse().join('/') }} 
         </li>
         <li class="td list-group-item text-start" style="color: #00AD8C;"> {{ 
           Intl.NumberFormat('BRL', {style: 'currency', currency: 'BRL'})
-            .format(Number(item.value))
+            .format(Number(nfs.value))
         }} </li>
         <li
           class="td list-group-item text-start"
           style="width: 200px; color: #00AD8C; text-transform: uppercase;"> 
-          {{ orderStatusBuyerArr[item.orderStatusBuyer] }} 
+          {{ orderStatusBuyerArr[nfs.orderStatusBuyer] }} 
         </li>
         <li class="td list-group-item " style="width: 200px">
           <button
           type="button"
           class="cd-button rounded-pill px-4 py-1"
-          v-on:click="openProvider(item.provider.name)"
+          v-on:click="openProvider(nfs.provider.id)"
           >
           Dados do cedente
         </button>
@@ -54,7 +54,7 @@ export default {
 	name: 'NfsTable',
 	data() {
 		return {
-			info: [],
+			nfsInfos: [],
 			loading: true,
 			errored: false,
 			orderStatusBuyerArr: [
@@ -74,7 +74,7 @@ export default {
 		axios
 			.get('http://localhost:3001/orders')
 			.then((response) => {
-				this.info = response.data;
+				this.nfsInfos = response.data;
 			})
 			.catch((error) => {
 				console.log(error);

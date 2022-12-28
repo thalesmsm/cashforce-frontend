@@ -43,7 +43,7 @@
           <button
             type="button"
             class="cd-button rounded-pill px-4 py-1 mt-2"
-            v-on:click="openProvider(item.provider.name)"
+            v-on:click="openProvider(item.provider.id)"
           >
             Dados do cedente
           </button>

@@ -11,7 +11,6 @@
       <MobileComponent class="d-lg-none"/>
     </section>
   </div>
-
 </template>
 
 <script>

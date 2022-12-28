@@ -7,7 +7,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
 	{path: '/', redirect: '/nfs'},
 	{path: '/nfs', component: NfsMainPage},
-	{path: '/provider/:provider', component: ProviderComponent},
+	{path: '/provider/:providerId', component: ProviderComponent},
 ]
 
 const router = createRouter({
