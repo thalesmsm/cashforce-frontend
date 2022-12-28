@@ -3,7 +3,9 @@
     <nav class="nav-mob">
       <a href="https://cashforce.com.br">
         <img
-          src="https://cashforce.com.br/wp-content/themes/cashforce/assets/images/logo-cashforce.svg"
+          src="
+          https://cashforce.com.br/wp-content/themes/cashforce/assets/images/logo-cashforce.svg
+          "
           alt="Cashforce logo"
           class="px-3"
           />
@@ -15,8 +17,8 @@
 
 <script>
 export default {
-	name: "NavMob",
-};
+  name: 'NavMob',
+}
 </script>
 
 <style>

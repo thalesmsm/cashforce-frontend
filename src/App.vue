@@ -3,7 +3,9 @@
     <nav class="d-flex flex-column d-none d-lg-block" style="width: 18%">
       <a href="https://cashforce.com.br">
         <img
-          src="https://cashforce.com.br/wp-content/themes/cashforce/assets/images/logo-cashforce.svg"
+          src="
+          https://cashforce.com.br/wp-content/themes/cashforce/assets/images/logo-cashforce.svg
+          "
           alt="Cashforce logo"
           class="px-3"
           />
@@ -23,13 +25,13 @@
 </template>
 
 <script>
-import "bootstrap/dist/css/bootstrap.css";
-import "font-awesome/css/font-awesome.css";
-import MobileComponent from "./components/MobileComponent.vue";
-import NfsTable from "./components/NfsTable";
-import NavMob from "./components/NavMob.vue";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
+import MobileComponent from './components/MobileComponent.vue';
+import NfsTable from './components/NfsTable';
+import NavMob from './components/NavMob.vue';
 export default {
-	name: "App",
+	name: 'App',
 	components: {
 		NfsTable,
 		MobileComponent,
