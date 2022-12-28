@@ -15,8 +15,8 @@
 
 <script>
 export default {
-  name: "NavMob",
-}
+	name: "NavMob",
+};
 </script>
 
 <style>

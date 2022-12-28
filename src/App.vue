@@ -29,13 +29,13 @@ import MobileComponent from "./components/MobileComponent.vue";
 import NfsTable from "./components/NfsTable";
 import NavMob from "./components/NavMob.vue";
 export default {
-  name: 'App',
-  components: {
-    NfsTable,
-    MobileComponent,
-    NavMob,
-}
-}
+	name: "App",
+	components: {
+		NfsTable,
+		MobileComponent,
+		NavMob,
+	}
+};
 </script>
 
 <style>
@@ -55,6 +55,7 @@ export default {
   color: #00AD8C;
   padding-left: 10px;
   text-align: start;
+  width: 100%;
 }
 .nf-button:hover {
   background-color: #f5f7fa;
