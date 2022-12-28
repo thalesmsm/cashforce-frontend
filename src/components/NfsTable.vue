@@ -35,11 +35,12 @@
         </li>
         <li class="td list-group-item " style="width: 200px">
           <button
-            type="button"
-            class="cd-button rounded-pill px-4 py-1"
+          type="button"
+          class="cd-button rounded-pill px-4 py-1"
+          v-on:click="openProvider(item.provider.name)"
           >
-            Dados do cedente
-          </button>
+          Dados do cedente
+        </button>
         </li>
       </ul>
     </div>
@@ -80,6 +81,13 @@ export default {
 				this.errored = true;
 			})
 			.finally(() => this.loading = false);
+	},
+	methods: {
+		openProvider(provider) {
+			this.$router.push({
+				path: `provider/${provider}`
+			})
+		}
 	}
 };
 </script>

@@ -43,6 +43,7 @@
           <button
             type="button"
             class="cd-button rounded-pill px-4 py-1 mt-2"
+            v-on:click="openProvider(item.provider.name)"
           >
             Dados do cedente
           </button>
@@ -85,6 +86,13 @@ export default {
 				this.errored = true;
 			})
 			.finally(() => this.loading = false);
+	},
+	methods: {
+		openProvider(provider) {
+			this.$router.push({
+				path: `provider/${provider}`
+			})
+		}
 	}
 };
 </script>

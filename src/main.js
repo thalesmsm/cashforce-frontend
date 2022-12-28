@@ -1,4 +1,18 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import ProviderComponent from './components/ProviderComponent'
+import NfsMainPage from './components/NfsMainPage'
+import { createRouter, createWebHistory } from 'vue-router'
 
-createApp(App).mount('#app')
+const routes = [
+	{path: '/', redirect: '/nfs'},
+	{path: '/nfs', component: NfsMainPage},
+	{path: '/provider/:provider', component: ProviderComponent},
+]
+
+const router = createRouter({
+	history: createWebHistory(),
+	routes
+})
+
+createApp(App).use(router).mount('#app')

@@ -38,10 +38,5 @@ export default {
     border-color: #00AD8C;
     border-width: 0 4px 0 0;
     color: #00AD8C;
-    padding-left: 10px;
-    text-align: start;
-  }
-  .nf-button:hover {
-    background-color: #f5f7fa;
   }
 </style>
