@@ -1,18 +1,19 @@
 <template>
-  <div>
-    <nav class="nav-mob">
-      <a href="https://cashforce.com.br">
-        <img
-          src="
-          https://cashforce.com.br/wp-content/themes/cashforce/assets/images/logo-cashforce.svg
-          "
-          alt="Cashforce logo"
-          class="px-3"
-          />
-      </a>
-      <button class="nf-button-mob"><i class="fa"></i> Notas fiscais</button>
-    </nav>
-  </div>
+  <nav class="nav-mob">
+    <a href="https://cashforce.com.br">
+      <img
+        src="
+        https://cashforce.com.br/wp-content/themes/cashforce/assets/images/logo-cashforce.svg
+        "
+        alt="Cashforce logo"
+        class="px-3"
+        />
+    </a>
+    <a href="/nfs" class="nf-button-mob d-flex align-items-center">
+      <i class="fa m-2"></i>
+      Notas fiscais
+    </a>
+  </nav>
 </template>
 
 <script>
@@ -34,9 +35,11 @@ export default {
   }
 
   .nf-button-mob {
-    background-color: transparent;
-    border-color: #00AD8C;
-    border-width: 0 4px 0 0;
+    border-right: 4px solid #00AD8C;
     color: #00AD8C;
+    cursor: pointer;
+    height: 48px;
+    padding-right: 8px;
+    text-decoration: none;
   }
 </style>

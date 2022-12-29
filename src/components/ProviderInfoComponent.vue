@@ -8,14 +8,6 @@
           <h1 class="fs-3"><i class="fa"></i> Dados do cedente</h1>
           <h6 class="">Aqui estão os dados do Cedente.</h6>
         </div>
-        <RouterLink to="/nfs">
-          <button
-            type="button"
-            class="cd-button rounded-pill px-4 py-1 mt-2"
-          >
-          Voltar
-        </button>
-        </RouterLink>
       </div>
       <div>
         <p v-if="errored">Desculpe! Impossível carregar os dados</p>
@@ -48,7 +40,7 @@ import MobileNav from './MobileNav.vue';
 import NavComp from './NavComp.vue';
 
 export default {
-	name: 'ProviderComponent',
+	name: 'ProviderInfoComponent',
 	data() {
 		return {
 			providerInfos: {},
@@ -58,7 +50,7 @@ export default {
 	},
 	mounted() {
 		axios
-			.get(`http://localhost:3001/providers/${Number(this.$route.params.providerId)}`)
+			.get(`http://localhost:3001/providers/${this.$route.params.providerId}`)
 			.then((response) => {
 				this.providerInfos = response.data;
 			})

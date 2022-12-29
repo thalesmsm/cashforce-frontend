@@ -9,7 +9,7 @@
         class="px-3"
         />
     </a>
-    <a class="nf-button d-flex align-items-center">
+    <a href="/nfs" class="nf-button d-flex align-items-center">
       <i class="fa m-2"></i>
       Notas fiscais
     </a>
