@@ -16,16 +16,16 @@
         <div v-else class="d-flex justify-content-center">
           <ul class="pv-tbody d-flex flex-column border rounded p-3">
             <li class="pv-th list-group-item">NOME</li>
-            <li class="pv-td list-group-item text-start px-2 border rounde">
+            <li class="pv-td list-group-item text-start px-2 border rounded">
               {{ providerInfos.name }}</li>
             <li class="pv-th list-group-item">BUSINESS NAME</li>
-            <li class="pv-td list-group-item text-start px-2 border rounde">
+            <li class="pv-td list-group-item text-start px-2 border rounded">
               {{ providerInfos.tradingName }}</li>
             <li class="pv-th list-group-item">CNPJ</li>
-            <li class="pv-td list-group-item text-start px-2 border rounde">
+            <li class="pv-td list-group-item text-start px-2 border rounded">
               {{ providerInfos.cnpj.cnpj }}</li>
             <li class="pv-th list-group-item">TIPO DA EMPRESA</li>
-            <li class="pv-td list-group-item text-start px-2 border rounde">
+            <li class="pv-td list-group-item text-start px-2 border rounded">
               {{ providerInfos.cnpj.companyType }}</li>
           </ul>
         </div>
