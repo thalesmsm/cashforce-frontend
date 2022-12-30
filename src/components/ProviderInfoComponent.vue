@@ -8,6 +8,14 @@
           <h1 class="fs-3"><i class="fa"></i> Dados do cedente</h1>
           <h6 class="">Aqui estão os dados do Cedente.</h6>
         </div>
+        <RouterLink to="/nfs">
+          <button
+            type="button"
+            class="cd-button rounded-pill px-4 py-1 mt-2"
+          >
+          Voltar
+        </button>
+        </RouterLink>
       </div>
       <div>
         <p v-if="errored">Desculpe! Impossível carregar os dados</p>
@@ -18,7 +26,7 @@
             <li class="pv-th list-group-item">NOME</li>
             <li class="pv-td list-group-item text-start px-2 border rounded">
               {{ providerInfos.name }}</li>
-            <li class="pv-th list-group-item">BUSINESS NAME</li>
+            <li class="pv-th list-group-item">RAZÃO SOCIAL</li>
             <li class="pv-td list-group-item text-start px-2 border rounded">
               {{ providerInfos.tradingName }}</li>
             <li class="pv-th list-group-item">CNPJ</li>
@@ -66,7 +74,7 @@ export default {
 
 <style>
 .pv-tbody {
-  width: 80%;
+  width: 60%;
 }
 
 .pv-th {
@@ -76,5 +84,12 @@ export default {
 .pv-th, .pv-td {
   width: 100%;
 }
+
+@media (max-width: 990px)
+  {
+    .pv-tbody {
+      width: 90%;
+    }
+  }
 
 </style>
